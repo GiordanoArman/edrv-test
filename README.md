@@ -38,7 +38,7 @@ Let's examine the polling flow:
  4. Their app sends response to network.
  5. Our app receives the response.
 
-Between point A and C there can be variable time spans taken by our requests, depending on the network performance at each of our requests, how much traffic is currently going through their infrastructure and how much their machines are busy handling other tasks. Sending requests at regular intervals with solutions like `setInterval` can cause problems in situations like the following:
+Between point A and C there can be variable time amounts taken by our requests, depending on the network performance, traffic going through their infrastructure and how much their machines are busy handling other tasks at each of our requests. Sending requests at regular intervals with solutions like `setInterval` can cause problems in situations like the following:
 
  - Our app sends a message at 00:00:00.
  - The network performs poorly, their infrastructure is saturated and their app checks whether we comply with the constraint at 00:00:10 (ten seconds later) and responds at 00:00:11.
