@@ -1,5 +1,6 @@
 console.log("starting...");
-require("./index.js")({
+const appModule = require("./index.js");
+appModule.main({
   url: "https://my.newmotion.com/api/map/v2/locations/2735712"
 }).catch((error) => {
   console.error(error);
