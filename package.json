@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "lint": "./node_modules/.bin/eslint ./",
-    "lint-init": "./node_modules/.bin/eslint --init"
+    "lint-init": "./node_modules/.bin/eslint --init",
+    "start": "node src/start.js"
   },
   "author": "",
   "license": "ISC",

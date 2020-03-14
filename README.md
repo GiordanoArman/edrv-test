@@ -1,6 +1,28 @@
-## Why we wait for the server response to start waiting for the next call
+# Project overview
 
-In this app I could have just set an interval to do the polling, like this:
+This app:
+
+ 1. Uses the most efficient way of querying the API which is going as near as possible to the 5 minutes minimum interval allowed by the API provider.
+ 2. Can respect the API constraint if it crashes and is restarted, since it takes note of its operations on a persistent database.
+ 3. Can operate if the database is corrupt.
+ 4. Takes into account CPU clock errors and avoids banning due to them.
+ 5. Takes into account possible network or API infrastructure poor performance during the communication.
+ 6. Optimizes wait times based on the last response or query dates, on restart too.
+
+## Installation
+
+ 1. Make sure you have Node.js v12.14.0 or higher and npm 6.13.4 or higher installed on your machine.
+ 2. Open a terminal window and `cd` into the project folder.
+ 3. Run `npm install` and wait for it to complete.
+
+## Running
+
+ 1. After installing `cd` into the project folder.
+ 2. Run `npm run start`.
+
+## Why the app waits for the server response to start waiting for the next call
+
+In this app I could have set an interval to do the polling, like this:
    
 
      setInterval(doThePolling, 1000 * 60 * 5);
@@ -21,6 +43,6 @@ Between point A and C there can be variable time spans taken by our requests, de
  - Our app sends a message at 00:00:00.
  - The network performs poorly, their infrastructure is saturated and their app checks whether we comply with the constraint at 00:00:10 (ten seconds later) and responds at 00:00:11.
  - Our app sends a second message at 00:05:00 (five minutes after our first message was sent).
- - The networks performs better and the infrastructure is freer, so their app checks on our constraint compliance at 00:05:01 (1 second later it was sent). Their app will detect that only 4 minutes and 51 seconds have passed since our initial message. At this point we are banned.
+ - The networks performs better and their infrastructure is less busy, so their app checks on our constraint compliance at 00:05:01 (1 second later it was sent). Their app will detect that only 4 minutes and 51 seconds have passed since our initial message. At this point we are banned.
  
- Knowing for certain that the amount of time between point 1 and 3 is always less or equal to the time between point 1 and 5, if we wait for E to happen before setting the next polling call we are sure to avoid the just mentioned banning situation.
+ Knowing for certain that the amount of time between point 1 and 3 is always less or equal to the time between point 1 and 5, if we wait for point 5 (the app gets the response) to happen before setting the next polling call we are sure to avoid the just mentioned banning situation.
