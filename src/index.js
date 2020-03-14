@@ -153,7 +153,7 @@ module.exports = {
   constants: {
     API_MIN_INTERVAL_MS,
     CPU_TOLERANCE_MS,
-    INTERVAL_MS,
+    WAIT_TIME_MS,
     MAX_QUERY_RECEPTION_DELAY_MS,
     DEFAULT_DB
   },
