@@ -17,7 +17,7 @@ This app:
 
 ## Running
 
- 1. After installing `cd` into the project folder.
+ 1. `cd` into the project folder.
  2. Run `npm run start`.
  
 ## Codebase overview
