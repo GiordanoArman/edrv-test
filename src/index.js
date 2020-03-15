@@ -184,7 +184,8 @@ function setDB(lr, lq) {
 }
 
 // this function is used only to silence Node.js in seDB who threatens 
-// developers who don't handle async errors, we don't care about 
+// developers who don't handle async errors, we don't care about them for this
+// task
 function noAction() {}
 
 
