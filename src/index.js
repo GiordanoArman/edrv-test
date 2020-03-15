@@ -48,7 +48,7 @@ async function main(options) { // function invoked by src/start.js on boot
   }
   
   let lastResponse = db.lastAPIResponseTime; // dates are in milliseconds 
-  let lastQuery = db.lastAPIQueryTime;       // since 1970/01/01 UTC
+  let lastQuery = db.lastAPIQueryTime;       // since 1970/01/01 UTC, or null
   
   let chargingStationStatus = null;
   
